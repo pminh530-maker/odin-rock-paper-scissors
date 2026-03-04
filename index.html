@@ -7,18 +7,23 @@
 </head>
 <body>
     <script>
-        console.log("Hello World")
+        console.log("Hello World");
         function getComputerChoice () {
-            let choice = Math.floor(Math.random()*3);
-            console.log(choice)
-            if (choice === 0) {
-                choice = "rock";
-            } else if (choice === 1) {
-                choice = "paper";
-            } else if (choice === 2) {
-                choice = "scissors"
+            let computerChoice = Math.floor(Math.random()*3);
+            console.log(computerChoice)
+            if (computerChoice === 0) {
+                computerChoice = "rock";
+            } else if (computerChoice === 1) {
+                computerChoice = "paper";
+            } else if (computerChoice === 2) {
+                computerChoice = "scissors"
             }
-            return choice
+            return computerChoice
+        }
+        function getHumanChoice () {
+            let humanChoice = prompt("Choose your symbol!", "");
+            return  humanChoice.toLowerCase();
+            console.log(humanChoice.toLowerCase());
         }
     </script>
 </body>
