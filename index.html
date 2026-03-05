@@ -8,54 +8,59 @@
 <body>
     <script>
         console.log("Hello World");
+        let humanScore = 0;
+        let computerScore = 0;
+
         function getComputerChoice () {
             let computerChoice = Math.floor(Math.random()*3);
             console.log(computerChoice)
             if (computerChoice === 0) {
-                computerChoice = "rock";
+                return "rock";
             } else if (computerChoice === 1) {
-                computerChoice = "paper";
+                return "paper";
             } else if (computerChoice === 2) {
-                computerChoice = "scissors"
+                return "scissors"
             }
-            return computerChoice
         }
+
         function getHumanChoice () {
             let humanChoice = prompt("Choose your symbol!", "");
             return  humanChoice.toLowerCase();
-            console.log(humanChoice.toLowerCase());
         }
-
-        let humanScore = 0;
-        let computerScore = 0;
 
         function playGame() {
-            function playRound(humanChoice,computerChoice) {
-                let roundPlayed = 0;
+            function playRound(humanSelection,computerSelection) {
             if (humanSelection === computerSelection) {
-                return console.log("It's a tie!",`Computer ${computerScore}, You ${humanScore}, Round ${++roundPlayed}` );
+                return console.log("It's a tie!");
             } else if (humanSelection === "rock" && computerSelection === "paper") {
-                return console.log("You lose! Paper beats Rock", `Computer ${++computerScore}, You ${humanScore}, Round ${++roundPlayed}`);
+                return console.log("You lose! Paper beats Rock", `Computer ${++computerScore}, You ${humanScore}`);
             } else if (humanSelection === "rock" && computerSelection === "scissors") {
-                return console.log("You win! Rock beats Scissors", `Computer ${computerScore}, You ${++humanScore}, Round ${++roundPlayed}`);
+                return console.log("You win! Rock beats Scissors", `Computer ${computerScore}, You ${++humanScore}`);
             } else if (humanSelection === "paper" && computerSelection === "scissors") {
-                return console.log("You lose! Scissors beats Paper", `Computer ${++computerScore}, You ${humanScore}, Round ${++roundPlayed}`);
+                return console.log("You lose! Scissors beats Paper", `Computer ${++computerScore}, You ${humanScore}`);
             } else if (humanSelection === "paper" && computerSelection === "rock") {
-                return console.log("You win! Paper beats Rock", `Computer ${computerScore}, You ${++humanScore}, Round ${++roundPlayed}`);
+                return console.log("You win! Paper beats Rock", `Computer ${computerScore}, You ${++humanScore}`);
             } else if (humanSelection === "scissors" && computerSelection === "rock") {
-                return console.log("You lose! Rock beats Scissors", `Computer ${++computerScore}, You ${humanScore}, Round ${++roundPlayed}`);
+                return console.log("You lose! Rock beats Scissors", `Computer ${++computerScore}, You ${humanScore}`);
             } else if (humanSelection === "scissors" && computerSelection === "paper") {
-                return console.log("You win! Scissors beats Paper", `Computer ${computerScore}, You ${++humanScore}, Round ${++roundPlayed}`);
+                return console.log("You win! Scissors beats Paper", `Computer ${computerScore}, You ${++humanScore}`);
             }
             }
 
-            const humanSelection = getHumanChoice();
-            const computerSelection = getComputerChoice();
+            // 2. RUN the loop (the actual "playing" of the 5 rounds)
+            for (let i = 0; i < 5; i++) {
+                const humanSelection = getHumanChoice();    // RECALLING the choice
+                const computerSelection = getComputerChoice(); // RECALLING the choice
+                
+                playRound(humanSelection, computerSelection); // Executing the round
+            }
 
-            playRound(humanSelection, computerSelection);
-
-
+            // 3. (Optional) Show final score here after the loop finishes
+            console.log(`Final Score -> You: ${humanScore} | Computer: ${computerScore}`);
         }
+        
+        playGame();
+
     </script>
 </body>
 </html>
