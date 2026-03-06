@@ -11,6 +11,8 @@
         let humanScore = 0;
         let computerScore = 0;
 
+        // These variables must be declared at the start so they become global and can be accessed by functions later on.
+
         function getComputerChoice () {
             let computerChoice = Math.floor(Math.random()*3);
             console.log(computerChoice)
@@ -43,9 +45,10 @@
             }
             }
 
-            // 2. RUN the loop (the actual "playing" of the 5 rounds)
+            // The loop needs to be inside the fucntion
             for (let i = 0; i < 5; i++) {
-                console.log(`--- Round ${i + 1} ---`);
+                console.log(`--- Round ${i + 1} ---`); 
+                // It has to be i+1, otherwise if we use the prefix ++i, the game starts at Round 0
                 const humanSelection = getHumanChoice();    // RECALLING the choice
                 const computerSelection = getComputerChoice(); // RECALLING the choice
                 
