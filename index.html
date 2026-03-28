@@ -6,8 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <ul>
+        <li></li>
+    </ul>
     <script>
-        console.log("Hello World");
+/*         console.log("Hello World");
         let humanScore = 0;
         let computerScore = 0;
 
@@ -66,8 +69,26 @@
             }
         }
         
-        playGame();
+        playGame(); */
 
+        // Create three buttons, one for each selection. Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked. (you can keep the console.logs for this step)
+
+        let list = document.querySelector("ul");
+        list.style.listStyleType = "none";
+
+        let choice = document.querySelector("li");
+        
+        let rock = document.createElement("button");
+        rock.textContent = "ROCK";
+        choice.appendChild(rock);
+
+        let paper = document.createElement("button");
+        paper.textContent = "PAPER";
+        choice.appendChild(paper);
+        let scissors = document.createElement("button");
+        scissors.textContent = "SCISSORS";
+        choice.appendChild(scissors);
+        
     </script>
 </body>
 </html>
