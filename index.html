@@ -10,11 +10,28 @@
         <li></li>
     </ul>
     <script>
-/*         console.log("Hello World");
+        let list = document.querySelector("ul");
+        list.style.listStyleType = "none";
+
+        let choice = document.querySelector("li");
+        
+        let rock = document.createElement("button");
+        rock.textContent = "ROCK";
+        rock.addEventListener("click", (e) => playRound("rock", getComputerChoice()));
+        choice.appendChild(rock);
+
+        let paper = document.createElement("button");
+        paper.textContent = "PAPER";
+        paper.addEventListener("click", (e) => playRound("paper", getComputerChoice()));
+        choice.appendChild(paper);
+
+        let scissors = document.createElement("button");
+        scissors.textContent = "SCISSORS";
+        scissors.addEventListener("click", (e) => playRound("scissors", getComputerChoice()));
+        choice.appendChild(scissors);
+
         let humanScore = 0;
         let computerScore = 0;
-
-        // These variables must be declared at the start so they become global and can be accessed by functions later on.
 
         function getComputerChoice () {
             let computerChoice = Math.floor(Math.random()*3);
@@ -24,71 +41,35 @@
             return "scissors"
             }
 
-        function getHumanChoice () {
-            let humanChoice = prompt("Choose your symbol!", "");
-            return  humanChoice.toLowerCase();
-        }
+        function playRound(humanSelection,computerSelection) {
+            let result = document.createElement("div");
+            list.appendChild(result)
 
-        function playGame() {
-            function playRound(humanSelection,computerSelection) {
+            if (humanScore === 5 || computerScore === 5) {return};
+
             if (humanSelection === computerSelection) {
-                return console.log("It's a tie!");
+                result.textContent = "It's a tie!"; 
             } else if (humanSelection === "rock" && computerSelection === "paper") {
-                return console.log("You lose! Paper beats Rock", `Computer ${++computerScore}, You ${humanScore}`);
+                result.textContent = `You lose! Paper beats Rock, Computer ${++computerScore}, You ${humanScore}`;
             } else if (humanSelection === "rock" && computerSelection === "scissors") {
-                return console.log("You win! Rock beats Scissors", `Computer ${computerScore}, You ${++humanScore}`);
+                result.textContent = `You win! Rock beats Scissors Computer ${computerScore}, You ${++humanScore}`;
             } else if (humanSelection === "paper" && computerSelection === "scissors") {
-                return console.log("You lose! Scissors beats Paper", `Computer ${++computerScore}, You ${humanScore}`);
+                result.textContent = `You lose! Scissors beats Paper Computer ${++computerScore}, You ${humanScore}`;
             } else if (humanSelection === "paper" && computerSelection === "rock") {
-                return console.log("You win! Paper beats Rock", `Computer ${computerScore}, You ${++humanScore}`);
+                result.textContent = `You win! Paper beats Rock Computer ${computerScore}, You ${++humanScore}`;
             } else if (humanSelection === "scissors" && computerSelection === "rock") {
-                return console.log("You lose! Rock beats Scissors", `Computer ${++computerScore}, You ${humanScore}`);
+                result.textContent = `You lose! Rock beats Scissors Computer ${++computerScore}, You ${humanScore}`;
             } else if (humanSelection === "scissors" && computerSelection === "paper") {
-                return console.log("You win! Scissors beats Paper", `Computer ${computerScore}, You ${++humanScore}`);
-            }
-            }
-
-            // The loop needs to be inside the fucntion
-            for (let i = 0; i < 5; i++) {
-                console.log(`--- Round ${i + 1} ---`); 
-                // It has to be i+1, otherwise if we use the prefix ++i, the game starts at Round 0
-                const humanSelection = getHumanChoice();    // RECALLING the choice
-                const computerSelection = getComputerChoice(); // RECALLING the choice
-                
-                playRound(humanSelection, computerSelection); // Executing the round
+                result.textContent = `You win! Scissors beats Paper" Computer ${computerScore}, You ${++humanScore}`;
             }
 
-            // 3. (Optional) Show final score here after the loop finishes
-            console.log(`Final Score -> You: ${humanScore} | Computer: ${computerScore}`);
-            if (humanScore > computerScore) {
-                console.log("CONGRATULATIONS! You won the match!");
-            } else if (computerScore > humanScore) {
-                console.log("GAME OVER: The computer won the match.");
-            } else {
-                console.log("IT'S A DRAW!");
-            }
-        }
-        
-        playGame(); */
+            if (humanScore == 5) {
+                result.textContent = `The human wins! Computer ${computerScore}, You ${humanScore}`};  
+            if (computerScore == 5) {
+                result.textContent = `The computer wins! Computer ${computerScore}, You ${humanScore}`
+            };
 
-        // Create three buttons, one for each selection. Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked. (you can keep the console.logs for this step)
-
-        let list = document.querySelector("ul");
-        list.style.listStyleType = "none";
-
-        let choice = document.querySelector("li");
-        
-        let rock = document.createElement("button");
-        rock.textContent = "ROCK";
-        choice.appendChild(rock);
-
-        let paper = document.createElement("button");
-        paper.textContent = "PAPER";
-        choice.appendChild(paper);
-        let scissors = document.createElement("button");
-        scissors.textContent = "SCISSORS";
-        choice.appendChild(scissors);
-        
+            }   
     </script>
 </body>
 </html>
