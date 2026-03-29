@@ -14,6 +14,9 @@
         list.style.listStyleType = "none";
 
         let choice = document.querySelector("li");
+        choice.style.display = "flex";
+        choice.style.gap = "20px";
+        choice.style.justifyContent = "center";
         
         let rock = document.createElement("button");
         rock.textContent = "ROCK";
@@ -43,9 +46,9 @@
 
         function playRound(humanSelection,computerSelection) {
             let result = document.createElement("div");
-            list.appendChild(result)
+            list.appendChild(result);
 
-            if (humanScore === 5 || computerScore === 5) {return};
+            if (humanScore === 5 || computerScore === 5) {return;}
 
             if (humanSelection === computerSelection) {
                 result.textContent = "It's a tie!"; 
@@ -64,12 +67,19 @@
             }
 
             if (humanScore == 5) {
-                result.textContent = `The human wins! Computer ${computerScore}, You ${humanScore}`};  
+                result.textContent = `The human wins! Computer ${computerScore}, You ${humanScore}`
+            }
             if (computerScore == 5) {
                 result.textContent = `The computer wins! Computer ${computerScore}, You ${humanScore}`
-            };
+            }
+
+            if (humanScore == 5 || computerScore == 5) {
+                rock.disabled = true;
+                paper.disabled = true;
+                scissors.disabled = true;
+            }
 
             }   
     </script>
-</body>
+    </body>
 </html>
